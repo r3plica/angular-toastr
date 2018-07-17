@@ -1,5 +1,7 @@
 # Angular Toastr
 
+**This project needs new maintainers. I cannot maintain it anymore, I don't do more AngularJS and I don't have the time for it anymore, please send an email or open an issue if you wish to maintain it**
+
 [![Code Climate](https://codeclimate.com/github/Foxandxss/angular-toastr.png)](https://codeclimate.com/github/Foxandxss/angular-toastr) [![Build Status](https://travis-ci.org/Foxandxss/angular-toastr.svg?branch=master)](https://travis-ci.org/Foxandxss/angular-toastr) [![devDependency Status](https://david-dm.org/Foxandxss/angular-toastr/dev-status.svg)](https://david-dm.org/Foxandxss/angular-toastr#info=devDependencies)
 
 **NOTE:** For angular 1.2.x support check `angular-1.2` branch or download the `0.4.x` release of `angular-toastr`.
@@ -26,11 +28,14 @@ If you are not using npm (you should), you can use bower:
 $ bower install angular-toastr
 ```
 
-To use a CDN, you can include the next two lines:
+To use a CDN, you can include one of these options:
 
 ```html
-<script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
-<link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+<script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+<!-- or -->
+<script src="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.tpls.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.css">
 ```
 
 Or you can grab the latest [release](https://github.com/Foxandxss/angular-toastr/releases) and add both the `css` and `javascript` file:
@@ -39,6 +44,8 @@ Or you can grab the latest [release](https://github.com/Foxandxss/angular-toastr
 <link rel="stylesheet" type="text/css" href="angular-toastr.css" />
 <script type="text/javascript" src="angular-toastr.tpls.js"></script>
 ```
+
+**Note:** If you add a script tag for angular-toastr, keep in mind that you need the `tpls` version **or** the other depending if you want the default template or not (see below).
 
 If you want animations, don't forget to add `angular-animate`.
 
@@ -121,6 +128,18 @@ app.controller('foo', function($scope, toastr) {
   toastr.active();
 });
 ```
+
+#### Refreshing an opened toast:
+
+```javascript
+app.controller('foo', function($scope, toastr) {
+  var toast = toastr.error('You are not allowed to do this!');
+  // after doing something...
+  toastr.refreshTimer(toast, 5000);
+});
+```
+
+The second parameter is optional and will fallback to the configured timeOut.
 
 It return the number of active toasts in screen.
 

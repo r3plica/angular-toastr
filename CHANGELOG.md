@@ -1,5 +1,29 @@
 # Changelog
 
+## Version 2.1.1
+
+- Add /dist again for bower.
+
+## Version 2.1.0
+
+- Fix wrong z-index in production build.
+- Add refreshTimer method to refresh the timeout of shown toasts.
+
+## Version 2.0.0
+Not the promised version, but should help with some unwanted bugs.
+
+- `replace: true` has been removed from the directives.
+- Preserve `margin-bottom` of each toasts.
+
+**BREAKING CHANGE:**
+
+`replace: true` has been removed. If you use a custom template, you will probably need to do
+some CSS changes. On the good part, it should help with some bugs.
+
+## Version 1.7.0
+
+- `toastr` service has an `active()` method to get all the opened toasts.
+
 ## Version 1.6.0
 
 - onTap callback receives the whole toast as the first parameter.
@@ -43,7 +67,7 @@
 
 - Support for a progress bar.
 - A config option to change the path of the templates.
- 
+
 **BREAKING CHANGE:**
 
 If you were using a custom template using the default path, it changed from:

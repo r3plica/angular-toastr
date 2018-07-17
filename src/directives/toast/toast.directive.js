@@ -8,7 +8,6 @@
 
   function toast($injector, $interval, toastrConfig, toastr) {
     return {
-      replace: true,
       templateUrl: function() {
         return toastrConfig.templates.toast;
       },
@@ -30,7 +29,7 @@
         button.addClass('toast-close-button');
         button.attr('ng-click', 'close(true, $event)');
         $compile(button)(scope);
-        element.prepend(button);
+        element.children().prepend(button);
       }
 
       scope.init = function() {
@@ -63,6 +62,13 @@
           $event.stopPropagation();
         }
         toastr.remove(scope.toastId, wasClicked);
+      };
+      
+      scope.refreshTimer = function(newTime) {
+        if (timeout) {
+          $interval.cancel(timeout);
+          timeout = createTimeout(newTime || scope.options.timeOut);
+        }
       };
 
       element.on('mouseleave', function() {
